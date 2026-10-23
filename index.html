@@ -226,6 +226,39 @@ main{max-width:1080px;margin:0 auto;padding:34px 42px 70px}
 /* v54: slightly smaller text in the content area */
 main{zoom:.92}
 .sst{font-size:.84rem}.logo2 b{font-size:1.35rem}.pl,.ft2{font-size:.78rem}
+
+/* v55: website look, no blue frame, light-blue numbers */
+:root{--hh:73px}
+body{padding:0;background:#EDF3FA}
+.page-outer-frame{max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;background:#EDF3FA;overflow:visible}
+header.top{padding:14px 32px;background:#fff;border-bottom:1px solid #dfe7f3;box-shadow:0 1px 8px rgba(30,50,90,.06)}
+.lg,.pl,.tgl{box-shadow:none;border:1px solid #dfe7f3;background:#f4f8fd}
+.ft2{box-shadow:none;border:1px solid #d6e0f0;background:#fff}.ft2:hover{border-color:#b9c7e6;color:#002BFF;transform:none;background:#f4f8fd}.ft2:active{box-shadow:none;transform:none}
+.sb{background:#fff;border-right:1px solid #dfe7f3;box-shadow:none}
+.sst{box-shadow:none}.sst:hover:not(:disabled){box-shadow:none;background:#f4f8fd}.sst.cur{box-shadow:none;background:#eef3ff}
+.sd{box-shadow:none;background:#eef2f9}.sst.cur .sd{box-shadow:none}
+.sfc{box-shadow:none;border:1px solid #dfe7f3;background:#f7faff}.user-avatar{box-shadow:none;border:1px solid #dfe7f3}
+.umenu{box-shadow:0 6px 20px rgba(30,50,90,.14)}.umenu button{box-shadow:none;border:1px solid #e3eaf6}
+main{max-width:1180px;padding:32px 40px 64px}
+.card,.co,.sys,.bh,.cgr,.jny,.dfc{box-shadow:0 2px 12px rgba(30,50,90,.07);border:1px solid #e3eaf6;border-radius:16px}
+.sys,.co{border-left:5px solid var(--ca)}
+.kt2,.ex,.g div,.jt,.tl4>div{box-shadow:none;border:1px solid #e3eaf6;border-radius:12px}
+.kt2{border-left:5px solid var(--red)}.kt2.warn{border-left-color:var(--amb)}
+.tl4>div{border-top:1px solid #e3eaf6}.tl4>div b{color:#3d5bd9}
+.jt.now{background:#eef3ff;box-shadow:none;border-color:#c9d6f5}.jn,.jt em{box-shadow:none;border:1px solid #e3eaf6}.jt.now .jn{border-color:#002BFF}
+.stgc{box-shadow:none;border:1px solid #d6e0f0}
+.pop,.exl,.bhb{box-shadow:none;border:1px solid #e3eaf6;border-left:4px solid #c9d6ee;background:#f7faff;border-radius:12px}
+.pop.nxt{background:#fff;box-shadow:0 2px 12px rgba(30,50,90,.07);border:1px solid #e3eaf6;border-left:4px solid #c9d6ee;border-radius:16px}
+.al{box-shadow:none;border-radius:12px}
+.btn{box-shadow:0 2px 8px rgba(0,43,255,.25)}.btn:hover{box-shadow:0 4px 12px rgba(0,43,255,.32)}
+.sm{box-shadow:none;border:1px solid #d6e0f0}.sm.on,.cite.on{background:#eef3ff;border-color:#b9c9f5;box-shadow:none}
+.wrap{box-shadow:none;border:1px solid #e3eaf6;background:#fff;border-radius:12px}
+input,select{box-shadow:none;border:1px solid #cfdaed;background:#fff;border-radius:10px}
+.sys .aic{box-shadow:none}
+.kt2 .ktv,.kt2.warn .ktv{color:#5878ff}
+.sfoot{text-align:center;padding:22px 16px;font-size:.78rem;color:#64748b;border-top:1px solid #dfe7f3;background:#fff}
+@media(max-width:900px){header.top{padding:12px 16px}main{padding:22px 16px 48px}}
+.co.sc,.sys.a{--ca:#a9bbff}.bh{border-left-color:#a9bbff}
 </style></head><body>
 <div id="login"><div class="card"><div class="logo" style="color:var(--b)">INB Sim<small>LEADERSHIP SIMULATION</small></div><p class="m">Sign in to begin.</p><div id="gb"></div><p class="m" id="lm"></p><div id="su" style="display:none"><p class="m">Guest mode does not save your progress to an account.</p><button class="btn" onclick="demo()">Continue as guest (demo)</button></div></div></div>
 <div class="ov" id="ov"><div class="card"><h3>Register to new course</h3><label>Course code</label><input id="cc" placeholder="Enter course code"><p><button class="btn" onclick="reg()">Register</button> <button class="sm" onclick="ov.style.display='none'">Cancel</button></p></div></div>
@@ -453,7 +486,7 @@ return`<h2>Leaderboard</h2><div class="g"><div>Average score<b>${av.toFixed(1)}<
 const SUBT=['FOUNDATION & CONTEXT','THE CASE & THE PROBLEM','DIAGNOSE: EVIDENCE & ROOT CAUSE','PRIORITISE','NEW INFORMATION','DECIDE','CHECKLIST & REPORT','CHECKLIST & REPORT'],NAVST=['Introduction','Situation','Diagnose','Prioritise','New Information','Decide','Checklist & Report'];
 let SBC=(()=>{try{return localStorage.getItem('inb4:sbc')=='1'}catch(e){return false}})();
 function sbt(){SBC=!SBC;try{localStorage.setItem('inb4:sbc',SBC?'1':'0')}catch(e){}const a=document.getElementById('app');if(a)a.classList.toggle('sbc',SBC)}
-function topbar(ar){return`<div class="tl">${ar?'<button class="tgl" title="Show or hide the stage panel" aria-label="Show or hide the stage panel" onclick="sbt()"><span></span><span></span><span></span></button>':''}<div class="logo2"><span class="lg">INB</span><div><b>India National Bank</b><small>Leadership Simulation • AI Governance</small></div></div></div><div class="tr"><span class="pl"><i class="dot"></i>Round 1 of 1 • Active</span><span class="pl">Participant: ${(U&&U.name)||'ExCo Member'}</span>${ar?'<button class="ft2" onclick="ft()">💡 Food for Thought</button><button class="ft2" onclick="go(0)">Overview</button>':'<button class="ft2" onclick="logout()">Sign out</button>'}</div>`}
+function topbar(ar){return`<div class="tl">${ar?'<button class="tgl" title="Show or hide the stage panel" aria-label="Show or hide the stage panel" onclick="sbt()"><span></span><span></span><span></span></button>':''}<div class="logo2"><span class="lg">INB</span><div><b>India National Bank</b><small>Leadership Simulation • AI Governance</small></div></div></div><div class="tr"><span class="pl">Participant: ${(U&&U.name)||'ExCo Member'}</span>${ar?'<button class="ft2" onclick="ft()">💡 Food for Thought</button>':'<button class="ft2" onclick="logout()">Sign out</button>'}</div>`}
 function mn(e){e.stopPropagation();const m=document.getElementById('um');if(m)m.style.display=m.style.display=='flex'?'none':'flex'}
 document.addEventListener('click',e=>{const m=document.getElementById('um');if(m&&!e.target.closest('.sbf'))m.style.display='none'});
 function jny(cur){const R=[['Introduction','Learn AI concepts & rules'],['Situation','Read case & performance matrix'],['Diagnose','Evidence study & root-cause analysis'],['Prioritise','Prioritisation weighting matrix'],['New Info','Regulator escalation alert'],['Decide','Path, task force & guardrails'],['Checklist & Report','Review decisions & get your report']];return`<div class="card jny"><h2 class="in-sec" style="margin-top:0">Your Decision Journey</h2><p class="m">Follow the seven sequential decision milestones to complete the simulation.</p><div class="jnr">${R.map((r,i)=>`<div class="jt${i==cur?' now':i<cur?' past':''}"><div class="jh"><span class="jn">${i<cur?'&#10003;':i+1}</span>${i==cur?'<em>Current</em>':''}</div><b>${r[0]}</b><span class="d">${r[1]}</span></div>`).join('')}</div></div>`}
@@ -462,7 +495,7 @@ if(a)h=hd('<div class="tb"><button class="on">ONGOING</button></div>')+`<main><p
 else{const nav='',stl=NAVST.map((n,i)=>{const last=i==6,tgt=last?(S.done?7:6):i,cur=S.v=='arena'&&(last?S.st>=6:S.st==i),dn=!cur&&(last?!!S.done:i<S.max),lock=tgt>S.max;return`<button class="sst${cur?' cur':dn?' dn':!lock?' op':''}" ${lock?'disabled':''} title="${n}" onclick="go(${tgt})"><span class="sd">${dn?'&#10003;':i+1}</span><span class="sl">${n}</span></button>`}).join('');
 const body=S.v=='arena'?stage()+(S.st<=LAST&&S.st<7?`<p style="margin-top:20px">${S.st>0?`<button class="sm" onclick="go(${S.st-1})">Back</button> `:''}<button class="btn" id="nx" onclick="nxt()">${S.st==LAST?'Save progress':S.st==3?'Lock priority':S.st==6?'Submit decisions':'Continue'}</button> <span id="sv" class="m"></span></p><p class="m" id="hn" style="color:var(--w)"></p>`:''):S.v=='lead'?lead():`<h2>Readings</h2><div class="two"><div class="card"><h3>Materials from instructor</h3><p class="m">None uploaded yet.</p></div><div class="card"><h3>Game Instructions</h3><p><b>Decision-making instruction</b><br><span class="m">The decision process, step by step.</span></p><button class="btn">Read</button><p style="margin-top:14px"><b>Walkthrough video</b><br><span class="m">A tutorial on making decisions.</span></p><button class="btn" onclick="vid()">View</button></div></div>`;
 h=`<header class="top">${topbar(1)}</header><div class="app${SBC?' sbc':''}" id="app"><aside class="sb"><div class="sbm"><div class="sbh">SIMULATION STAGES</div><div class="stl">${stl}</div></div><div class="sbf"><div class="umenu" id="um" style="display:none"><button onclick="S.v='courses';draw()">Home</button><button onclick="S.v='read';draw()">Readings</button><button onclick="S.v='lead';draw()">Leaderboard</button><button onclick="fs()">Full screen</button><button onclick="logout()">Sign out</button></div><button class="sfc" onclick="mn(event)" aria-haspopup="menu" title="Menu"><span class="user-avatar">${((U&&U.name)||'EX').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase()}</span><span class="sft"><b>${(U&&U.name)||'Executive Committee'}</b><span>India National Bank</span></span></button></div></aside><div class="mc"><main>${body}</main></div></div>`}
-$('root').innerHTML='<div class="page-outer-frame">'+h+'</div>';gate()}
+$('root').innerHTML='<div class="page-outer-frame">'+h+'<footer class="sfoot">&copy; 2026 India National Bank &middot; Leadership Simulation &middot; AI Governance</footer></div>';gate()}
 function reg(){const c=$('cc').value.trim();if(!c)return;S.reg=1;S.code=c;save();ov.style.display='none';draw()}
 function jwt(t){const b=t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(decodeURIComponent(atob(b).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join('')))}
 function onCred(r){const p=jwt(r.credential);if(ALLOWED_DOMAINS.length&&!ALLOWED_DOMAINS.includes(p.email.split('@')[1])){$('lm').textContent='This account is not allowed.';return}U={name:p.name,email:p.email};try{localStorage.setItem('inbu',JSON.stringify(U))}catch(e){}enter()}
